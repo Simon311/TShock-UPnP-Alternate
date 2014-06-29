@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using Terraria;
 using TerrariaApi.Server;
 using TShockAPI;
@@ -6,48 +7,48 @@ using NATUPNPLib;
 
 namespace UPnP
 {
-    [ApiVersion(1, 15)]
-    public class Plugin : TerrariaPlugin
-    {
-        public override Version Version
-        {
-            get { return new Version("1.0.0.0"); }
-        }
+	[ApiVersion(1, 16)]
+	public class Plugin : TerrariaPlugin
+	{
+		public override Version Version
+		{
+			get { return Assembly.GetExecutingAssembly().GetName().Version; }
+		}
 
-        public override string Name
-        {
-            get { return "UPnP-COM"; }
-        }
+		public override string Name
+		{
+			get { return "UPnP-COM"; }
+		}
 
-        public override string Author
-        {
-            get { return "Simon311"; }
-        }
+		public override string Author
+		{
+			get { return "Simon311"; }
+		}
 
-        public override string Description
-        {
-            get { return "Adds UPnP."; }
-        }
+		public override string Description
+		{
+			get { return "Adds UPnP."; }
+		}
 
-        public Plugin(Main game)
-            : base(game)
-        {
-            Order = -1;
-        }
+		public Plugin(Main game)
+			: base(game)
+		{
+			Order = -1;
+		}
 
-        public override void Initialize()
-        {
-            ServerApi.Hooks.GameInitialize.Register(this, Start);
-        }
+		public override void Initialize()
+		{
+			ServerApi.Hooks.GameInitialize.Register(this, Start);
+		}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                ServerApi.Hooks.GameInitialize.Deregister(this, Start);
-                Stop();
-            }
-        }
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				ServerApi.Hooks.GameInitialize.Deregister(this, Start);
+				Stop();
+			}
+		}
 
 		#region UPnP
 
@@ -100,7 +101,7 @@ namespace UPnP
 		#endregion UPnP
 
 		private void Start(EventArgs args)
-        {
+		{
 			if (openPort())
 			{
 				Console.WriteLine("(UPnP) Port Forward succesful.");
@@ -111,10 +112,10 @@ namespace UPnP
 				Console.WriteLine("(UPnP) Port Forward failed.");
 				Log.Error("(UPnP) Port Forward failed.");
 			}
-        }
+		}
 
-        private void Stop()
-        {
+		private void Stop()
+		{
 			if (closePort())
 			{
 				
@@ -126,6 +127,6 @@ namespace UPnP
 				Console.WriteLine("(UPnP) Port Dispose failed. (WTF?)");
 				Log.Error("(UPnP) Port Dispose failed. (WTF?)");
 			}
-        }
-    }
+		}
+	}
 }
