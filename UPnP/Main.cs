@@ -7,7 +7,7 @@ using NATUPNPLib;
 
 namespace UPnP
 {
-	[ApiVersion(1, 16)]
+	[ApiVersion(1, 17)]
 	public class Plugin : TerrariaPlugin
 	{
 		public override Version Version
@@ -65,7 +65,7 @@ namespace UPnP
 			if (mappings == null)
 			{
 				Console.WriteLine("(UPnP) Your UPnP discovery is down.");
-				Log.Info("(UPnP) Your UPnP discovery is down.");
+				TShock.Log.Info("(UPnP) Your UPnP discovery is down.");
 				return false;
 			}
 			try
@@ -105,12 +105,12 @@ namespace UPnP
 			if (openPort())
 			{
 				Console.WriteLine("(UPnP) Port Forward succesful.");
-				Log.Info("(UPnP) Port Forward succesful.");
+				TShock.Log.Info("(UPnP) Port Forward succesful.");
 			}
 			else
 			{
 				Console.WriteLine("(UPnP) Port Forward failed.");
-				Log.Error("(UPnP) Port Forward failed.");
+				TShock.Log.Error("(UPnP) Port Forward failed.");
 			}
 		}
 
@@ -120,12 +120,12 @@ namespace UPnP
 			{
 				
 				Console.WriteLine("(UPnP) Port Dispose succesful.");
-				Log.Info("(UPnP) Port Dispose succesful.");
+				TShock.Log.Info("(UPnP) Port Dispose succesful.");
 			}
 			else
 			{
 				Console.WriteLine("(UPnP) Port Dispose failed. (WTF?)");
-				Log.Error("(UPnP) Port Dispose failed. (WTF?)");
+				TShock.Log.Error("(UPnP) Port Dispose failed. (WTF?)");
 			}
 		}
 	}
