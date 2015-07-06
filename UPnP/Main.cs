@@ -7,7 +7,7 @@ using NATUPNPLib;
 
 namespace UPnP
 {
-	[ApiVersion(1, 17)]
+	[ApiVersion(1, 18)]
 	public class Plugin : TerrariaPlugin
 	{
 		public override Version Version
@@ -60,8 +60,8 @@ namespace UPnP
 
 		public static bool openPort()
 		{
-			portForwardIP = Netplay.LocalIPAddress();
-			portForwardPort = Netplay.serverPort;
+			portForwardIP = Netplay.ServerIPText;// .LocalIPAddress();
+			portForwardPort = Netplay.ListenPort;
 			if (mappings == null)
 			{
 				Console.WriteLine("(UPnP) Your UPnP discovery is down.");
