@@ -7,7 +7,7 @@ using NATUPNPLib;
 
 namespace UPnP
 {
-	[ApiVersion(1, 23)]
+	[ApiVersion(1, 25)]
 	public class Plugin : TerrariaPlugin
 	{
 		public override Version Version
